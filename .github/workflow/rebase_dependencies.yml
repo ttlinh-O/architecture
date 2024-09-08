@@ -1,4 +1,4 @@
- name: Automatic Rebase
+name: Automatic Rebase
 on:
   push:
     branches:
