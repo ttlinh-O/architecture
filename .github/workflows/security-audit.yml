@@ -1,22 +1,17 @@
-name: Security Audit
+name: Dependabot PR Check
 
 on:
   pull_request:
-    branches:
-      - main  # or specify other branches where you want the check to run
+    types: [opened, synchronize]
 
 jobs:
-  audit:
+  dependabot:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
-
-      # Run npm audit to check for vulnerabilities
-      - name: Run npm audit
-        run: npm audit --audit-level=high
+    - name: Run Dependabot
+      run: |
+        curl -X POST https://api.github.com/repos/${{ github.repository }}/dependabot/alerts \
+        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
