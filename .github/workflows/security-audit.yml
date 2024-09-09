@@ -1,0 +1,22 @@
+name: Security Audit
+
+on:
+  pull_request:
+    branches:
+      - main  # or specify other branches where you want the check to run
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run npm audit to check for vulnerabilities
+      - name: Run npm audit
+        run: npm audit --audit-level=high
