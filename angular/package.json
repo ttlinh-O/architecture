@@ -36,6 +36,7 @@
     "typescript": "~5.1.6"
   },
   "overrides": {
-    "@babel/traverse": ">=7.23.2"
+    "@babel/traverse": ">=7.23.2",
+    "semver": "6.3.1"
   }
 }
