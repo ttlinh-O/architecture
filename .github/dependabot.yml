@@ -11,3 +11,4 @@ updates:
       interval: "daily"
     open-pull-requests-limit: 0
     target-branch: "test"
+    versioning-strategy: "increase-if-necessary"
