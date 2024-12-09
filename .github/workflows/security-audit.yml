@@ -1,0 +1,17 @@
+name: Dependabot PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  dependabot:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run Dependabot
+      run: |
+        curl -X POST https://api.github.com/repos/${{ github.repository }}/dependabot/alerts \
+        -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}"
